@@ -26,10 +26,10 @@ const reducer = (state, {action, typeaction}) => {
         }
       }
 
-      else if (typeaction.digit == "." && state.currentOperand.includes(".") || state.currentOperand == "." ) {
+       if (typeaction.digit == "." && state.currentOperand.includes(".") || state.currentOperand == "." ) {
         return state
       }
-      else if (state.currentOperand == "0" && typeaction.digit.includes("0")) {
+       if (state.currentOperand == "0" && typeaction.digit.includes("0")) {
         return state
       }
 
