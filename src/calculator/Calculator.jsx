@@ -26,9 +26,7 @@ const reducer = (state, {action, typeaction}) => {
         }
       }
 
-       if (typeaction.digit == "." && state.currentOperand.includes(".") || state.currentOperand == "." ) {
-        return state
-      }
+   
        if (state.currentOperand == "0" && typeaction.digit.includes("0")) {
         return state
       }
