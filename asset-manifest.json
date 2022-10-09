@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.css": "/REACT-SImple_Projects/static/css/main.31d6cfe0.css",
+    "main.js": "/REACT-SImple_Projects/static/js/main.8fce4a7a.js",
+    "index.html": "/REACT-SImple_Projects/index.html",
+    "main.8fce4a7a.js.map": "/REACT-SImple_Projects/static/js/main.8fce4a7a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d6cfe0.css",
+    "static/js/main.8fce4a7a.js"
+  ]
+}
