@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import DigitButtons from './DigitButtons.jsx'
 import OperationButton from './OperationButton.jsx'
 
@@ -10,6 +10,7 @@ export const ACTIONS = {
   CLEAR: 'clear-state',
   BACKSPACE: 'delete'
 }
+
 
 const reducer = (state, {action, typeaction}) => {
 
@@ -25,18 +26,24 @@ const reducer = (state, {action, typeaction}) => {
           currentOperand: typeaction.digit
         }
       }
-
-      if (state.currentOperand == null && typeaction.digit.includes(".")){
+      if (state.currentOperand == null && typeaction.digit == ".") {
         return state
       }
+      
+      if (typeaction.digit === "." && state.currentOperand.includes(".")){
+        return state
+      }
+     
+      
       if (state.currentOperand == "0" && typeaction.digit.includes("0")) {
         return state
       }
 
       return {
         ...state,
-        currentOperand: `${state.currentOperand || ""}${typeaction.digit}`
+        currentOperand: `${state.currentOperand || "" }${typeaction.digit}` 
       }
+    
     
     // ADDING OPERATIONS
     case ACTIONS.ADD_OPERATION:
@@ -78,7 +85,7 @@ const reducer = (state, {action, typeaction}) => {
         overwrite: true,
         prevOperand: null,
         operation:null,
-        currentOperand: evaluateState(state)
+        currentOperand:  evaluateState(state)
       }
     
     // CLEAR
@@ -103,7 +110,7 @@ const reducer = (state, {action, typeaction}) => {
 const evaluateState = ({prevOperand,currentOperand,operation}) => {
   let prev = parseFloat(prevOperand)
   let curr = parseFloat(currentOperand)
-
+  if(isNaN(prev)||isNaN(curr)) return ""
   if (prevOperand == null || currentOperand == null || operation == null) {
     return ""
   }
@@ -128,10 +135,13 @@ const evaluateState = ({prevOperand,currentOperand,operation}) => {
 }
 
 
+
 const Calculator = () => {
 
-  const [{prevOperand, currentOperand, operation}, dispatch] = useReducer(reducer, {})
+  
 
+  const [{prevOperand, currentOperand, operation}, dispatch] = useReducer(reducer, {})
+ 
   return (
     <div>
       <div>Prev:{prevOperand}{operation}</div>
