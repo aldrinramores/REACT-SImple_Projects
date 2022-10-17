@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/REACT-SImple_Projects/static/css/main.9b8765d1.css",
-    "main.js": "/REACT-SImple_Projects/static/js/main.ffedf636.js",
+    "main.css": "/REACT-SImple_Projects/static/css/main.62ee23a4.css",
+    "main.js": "/REACT-SImple_Projects/static/js/main.dadc1e8b.js",
     "static/media/calculatorvid.gif": "/REACT-SImple_Projects/static/media/calculatorvid.a3e7133f50acc64b6081.gif",
     "static/media/todoGIF.gif": "/REACT-SImple_Projects/static/media/todoGIF.f45e3cce36c99a54c655.gif",
     "static/media/quoteGIF.gif": "/REACT-SImple_Projects/static/media/quoteGIF.cba143d856718374472b.gif",
     "static/media/palindrome.gif": "/REACT-SImple_Projects/static/media/palindrome.c765ed987ebfa3229702.gif",
     "static/media/Nimbus Sans Becker PBla Regular.otf": "/REACT-SImple_Projects/static/media/Nimbus Sans Becker PBla Regular.d269fd8c80a7feca13ba.otf",
     "index.html": "/REACT-SImple_Projects/index.html",
-    "main.9b8765d1.css.map": "/REACT-SImple_Projects/static/css/main.9b8765d1.css.map",
-    "main.ffedf636.js.map": "/REACT-SImple_Projects/static/js/main.ffedf636.js.map"
+    "main.62ee23a4.css.map": "/REACT-SImple_Projects/static/css/main.62ee23a4.css.map",
+    "main.dadc1e8b.js.map": "/REACT-SImple_Projects/static/js/main.dadc1e8b.js.map"
   },
   "entrypoints": [
-    "static/css/main.9b8765d1.css",
-    "static/js/main.ffedf636.js"
+    "static/css/main.62ee23a4.css",
+    "static/js/main.dadc1e8b.js"
   ]
 }
