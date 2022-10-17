@@ -2,6 +2,11 @@ import { Link } from 'react-router-dom'
 import React, { useReducer, useEffect } from 'react'
 import DigitButtons from './DigitButtons.jsx'
 import OperationButton from './OperationButton.jsx'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+
+
 
 export const ACTIONS = {
   NEW_DIGIT: 'new-digit',
@@ -136,39 +141,48 @@ const evaluateState = ({prevOperand,currentOperand,operation}) => {
 
 
 
-const Calculator = () => {
 
+const Calculator = () => {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  },[])
   
 
   const [{prevOperand, currentOperand, operation}, dispatch] = useReducer(reducer, {})
  
   return (
-    <div>
-      <div>Prev:{prevOperand}{operation}</div>
-      <div>Curr:{currentOperand}</div>
-        <div>
-        <DigitButtons dispatch={dispatch} digit = "7"/>
-          <DigitButtons dispatch={dispatch} digit = "8"/>
-          <DigitButtons dispatch={dispatch} digit = "9"/>
-          <DigitButtons dispatch={dispatch} digit = "4"/>
-          <DigitButtons dispatch={dispatch} digit = "5"/>
-          <DigitButtons dispatch={dispatch} digit = "6"/>
-          <DigitButtons dispatch={dispatch} digit = "1"/>
-          <DigitButtons dispatch={dispatch} digit = "2"/>
-          <DigitButtons dispatch={dispatch} digit = "3"/>
-          <DigitButtons dispatch={dispatch} digit = "0"/>
-          <DigitButtons dispatch={dispatch} digit = "."/>
+    <div className='overflow-hidden relative' data-aos ="fade-in-zoom" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
 
-          <OperationButton dispatch={dispatch} operation = "*"/>
-          <OperationButton dispatch={dispatch} operation = "-"/>
-          <OperationButton dispatch={dispatch} operation = "+"/>
-          <OperationButton dispatch={dispatch} operation = "/"/>
+      <h1 className='text-center absolute top-0 left-0 right-0 mx-auto text-white text-4xl md:text-6xl  main_title p-5 bg-sky-700'>Calculator</h1>
 
-          <button onClick={() => dispatch({action: ACTIONS.EVALUATE})} > = </button>
-          <button onClick={() => dispatch({action: ACTIONS.CLEAR})} > AC </button>
-          <button onClick={() => dispatch({action: ACTIONS.BACKSPACE})} > C </button>
+      <div className="max-w-xs  mx-auto mt-40 md:mt-60 px-5  pt-1  ">
+        <div className='text-gray-600 text-right text-2xl  rounded-t-md py-2 overflow-hidden bg-black/70 pr-2'>{prevOperand || "0"}{operation}</div>
+        <div className='text-white text-4xl text-right py-2 pr-2  bg-black/70 overflow-hidden'>{currentOperand || "0"}</div>
+        <div className='text-white grid grid-cols-4 poppins overflow-hidden'>
+            <button className='col-span-2 bg-red-900  hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50' onClick={() => dispatch({action: ACTIONS.CLEAR})} > AC </button>
+            <button className='hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-slate-900' onClick={() => dispatch({action: ACTIONS.BACKSPACE})} > C </button>
+            <OperationButton  className={`p-4 hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-sky-900`}   dispatch={dispatch} operation = "*"/>
+            <DigitButtons className={`p-4 hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-slate-900`}  dispatch={dispatch} digit = "7"/>
+            <DigitButtons  className={`p-4 hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-slate-900`} dispatch={dispatch} digit = "8"/>
+            <DigitButtons  className={`p-4 hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-slate-900`} dispatch={dispatch} digit = "9"/>
+            <OperationButton  className={`p-4 hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-sky-900`} dispatch={dispatch} operation = "+"/>
+            <DigitButtons className={`p-4 hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-slate-900`}  dispatch={dispatch} digit = "4"/>
+            <DigitButtons  className={`p-4 hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-slate-900`} dispatch={dispatch} digit = "5"/>
+            <DigitButtons  className={`p-4 hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-slate-900`} dispatch={dispatch} digit = "6"/>
+            <OperationButton  className={`p-4 hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-sky-900`} dispatch={dispatch} operation = "-"/>
+            <DigitButtons  className={`p-4 hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-slate-900`} dispatch={dispatch} digit = "1"/>
+            <DigitButtons  className={`p-4 hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-slate-900`} dispatch={dispatch} digit = "2"/>
+            <DigitButtons className={`p-4 hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-slate-900`}  dispatch={dispatch} digit = "3"/>
+            <OperationButton className={`p-4 hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-sky-900`} dispatch={dispatch} operation = "/"/>
+            <DigitButtons className={` col-span-2 p-4  rounded-bl-md hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-slate-900`} dispatch={dispatch} digit = "0"/>
+            <DigitButtons className={`p-4 hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-slate-900`} dispatch={dispatch} digit = "."/>
+            <button className=' col-end p-4 hover:-translate-y-1 transition-all hover:border-b-4 hover hover:border-r-1 hover:border-black/50 bg-slate-900 rounded-br-md' onClick={() => dispatch({action: ACTIONS.EVALUATE})} > = </button>
+           
         </div>
-        <Link to={"/"}>Back</Link>
+      </div>
+   
+     
     </div>
   )
 }

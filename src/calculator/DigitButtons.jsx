@@ -2,9 +2,9 @@
 import React from 'react'
 import {ACTIONS} from './Calculator'
 
-const DigitButtons = ({dispatch, digit}) => {
+const DigitButtons = ({dispatch, digit, className}) => {
   return (
-    <button onClick={() => dispatch({action: ACTIONS.NEW_DIGIT, typeaction: {digit}})}>{digit}</button>
+    <button className={`${className}`} onClick={() => dispatch({action: ACTIONS.NEW_DIGIT, typeaction: {digit}})}>{digit}</button>
   )
 }
 
